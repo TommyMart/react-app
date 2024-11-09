@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,9 +6,23 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+    console.log(import.meta.env.VITE_AUTH_API_URL)
+  }, []);
+
+  const getProtectedRoute = async () => {
+    // Makes API request to "/protectedRoute"
+    let response = await fetch(`${import.meta.env.VITE_AUTH_API_URL}/protectedRoute`);
+    let data = await response.json();
+    console.log(data);
+  }
+
   return (
     <>
       <div>
+        <button onClick={getProtectedRoute}>
+          Visit protected API route
+        </button>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

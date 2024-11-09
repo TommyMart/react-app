@@ -12,7 +12,7 @@ test("Render the App component", () => {
 
 })
 
-test("REnder the App component with a button that makes a number go up", async () => {
+test("Render the App component with a button that makes a number go up", async () => {
     render(<App />);
 
     // Find the button element on the screen
